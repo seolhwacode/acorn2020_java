@@ -6,6 +6,7 @@ public class MainClass06 {
 	public static void main(String[] args) {
 		boolean isWait=false;
 		// isWait 이 true 면 "기다려요" 가 대입되고 false 면 "기다리지 않아요" 가 대입된다.
+		//3항 연산자 : 연산에 사용되는 항이 3개이다. ? 왼쪽에 1개, 오른쪽에 2개
 		String result = isWait ? "기다려요" : "기다리지 않아요";
 		
 		System.out.println(result);
