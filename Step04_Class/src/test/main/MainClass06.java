@@ -18,7 +18,7 @@ public class MainClass06 {
 		//아래와 같이 사용할수도 있다. 
 		Box.car.drive();
 		
-		//a.showInfo(); // a 가 null 이므로 NullPointerException 발생
+//		a.showInfo(); // a 가 null 이므로 NullPointerException 발생
 		//b.getArea();  // b 가 null 이므로 NullPointerException 발생
 	}
 }

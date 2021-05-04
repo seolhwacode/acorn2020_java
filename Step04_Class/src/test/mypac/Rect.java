@@ -5,6 +5,8 @@ public class Rect {
 	//non static 필드 
 	public int width; //폭
 	public int height; //높이
+	public boolean is;
+	public double result;
 	
 	//사각형의 면적을 리턴해주는 non static 메소드 
 	public int getArea() {
