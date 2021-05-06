@@ -6,7 +6,6 @@ public final class SportsCar extends Car{
 	//생성자
 	public SportsCar(Engine engine) {
 		super(engine);
-		
 	}
 	//메소드
 	@Override

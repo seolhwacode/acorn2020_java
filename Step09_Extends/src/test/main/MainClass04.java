@@ -19,6 +19,7 @@ public class MainClass04 {
 		p2.call();
 		
 		//p3 에는 참조값이 들어 있으므로 정상적으로 사용가능 
+		p3.doInternet();
 	}
 }
 

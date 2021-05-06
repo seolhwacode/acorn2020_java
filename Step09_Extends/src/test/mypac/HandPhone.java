@@ -4,6 +4,7 @@ package test.mypac;
 public class HandPhone extends Phone{
 	//생성자
 	public HandPhone() {
+//		super();	-> 자동으로 상속받은 class의 생성자가 실행된다. 이는 생략 가능
 		System.out.println("HandPhone() 생성자 호출됨");
 	}
 	

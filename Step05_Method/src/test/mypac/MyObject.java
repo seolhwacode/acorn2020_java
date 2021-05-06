@@ -26,12 +26,14 @@ public class MyObject {
 	}
 	
 	// String type  을 리턴해주는 메소드
+	// 문자열이 아닌, 객체의 참조값을 반환한다.
 	public String getGreeting() {
 		String greet="안녕하세요";
 		return greet;
 	}
 	
 	// Car type  을 리턴해주는 메소드
+	//Car 객체의 참조값을 반환
 	public Car getCar() {
 		Car c1=new Car();
 		return c1;

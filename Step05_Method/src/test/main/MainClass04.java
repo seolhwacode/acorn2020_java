@@ -9,9 +9,13 @@ public class MainClass04 {
 	public static void main(String[] args) {
 		MyObject obj1=new MyObject();
 		//useSome() 메소드를 호출해 보세요.
-		obj1.useSome("김구라", new Car());
+		String name = "김씨";
+		Car c1 = new Car();
+		obj1.useSome(name, c1);
 		//doSome() 메소드를 호출해 보세요.
-		obj1.doSome(new Radio(), new Speaker());
+		Radio r = new Radio();
+		Speaker s = new Speaker();
+		obj1.doSome(r, s);
 	}
 }
 
