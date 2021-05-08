@@ -3,7 +3,8 @@ package test.main;
 import test.mypac.Weapon;
 
 public class MainClass06 {
-	//staic inner class 로 Weapon 추상 클래스 상속 받기 
+	//staic inner class 로 Weapon 추상 클래스 상속 받기 	
+	//내부 클래스를 내부 static method에서 사용하려면 static inner class로 생성해야한다.
 	public static class YourWeapon extends Weapon{
 		@Override
 		public void attack() {
@@ -19,6 +20,8 @@ public class MainClass06 {
 		 *  근데 불금이다보니 만사가 구찮다. 클래스를 파일로 만들기 싫다
 		 *  내부클래스(inner class) 로 만들고 싶다. 		 
 		 */
+		
+		//1) static inner class 사용하기
 		Weapon w1=new YourWeapon();
 		useWeapon(w1);
 		

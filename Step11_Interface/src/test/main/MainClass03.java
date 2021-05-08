@@ -13,6 +13,15 @@ public class MainClass03 {
 		useRemocon(mp);
 		useDrill(mp);
 		useMultiPlayer(mp);
+		
+		//만일 Remocon type 으로 받으면
+		Remocon remocon = mp;
+		
+		//Drill type
+		Drill drill = mp;
+		
+		//Object type
+		Object object = mp;
 	}
 	
 	public static void useRemocon(Remocon r) {

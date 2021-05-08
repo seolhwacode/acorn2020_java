@@ -11,6 +11,9 @@ public class MainClass04 {
 			}
 		});
 		
+		//람다함수
+		//interface 에 하나의 함수만 가지고 있는 경우.(함수형 인터페이스-@FunctionalInterface)
+		//위 익명 클래스의 줄임말과 같다.
 		Drill d1=()->{
 			System.out.println("벽에 20mm 의 구멍내기");
 		};
