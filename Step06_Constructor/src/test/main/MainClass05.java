@@ -20,8 +20,3 @@ public class MainClass05 {
 		System.out.println("main 메소드가 종료 됩니다.");
 	}
 }
-
-
-
-
-
