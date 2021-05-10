@@ -13,6 +13,15 @@ public class MainClass03 {
 		msgs.add("원숭이");
 		msgs.add("주뎅이");
 		msgs.add("덩어리");
+		
+		//msg의 방 크기만큼 반복문 돌면서
+		for(int i = 0; i < msgs.size(); i++) {
+			//i번째 방에 저장된 아이템 불러오기
+			String tmp = msgs.get(i);
+			System.out.println(tmp);
+		}
+		
+		System.out.println("---------------");
 		for(String tmp:msgs) {
 			System.out.println(tmp);
 		}

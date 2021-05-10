@@ -10,9 +10,9 @@ public class MainClass02 {
 	public static void main(String[] args) {
 		Scanner scan=new Scanner(System.in);
 		
-		System.out.println("나눌수 입력:");
+		System.out.print("나눌수 입력:");
 		String inputNum1=scan.nextLine();
-		System.out.println("나누어 지는수 입력:");
+		System.out.print("나누어 지는수 입력:");
 		String inputNum2=scan.nextLine();
 		try {
 			int num1=Integer.parseInt(inputNum1);

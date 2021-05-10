@@ -41,11 +41,12 @@ public class MainClass07 {
 		
 		//참조 테스트
 		List<MemberDto> a = list;
-		MemberDto b = list.get(0);
-		int c = list.get(0).getNum();
-		String d = list.get(0).getName();
-		String e = list.get(0).getAddr();
-		int f = list.get(0).getName().length();
+		MemberDto b = list.get(0);	//MemberDto 타입
+		int c = list.get(0).getNum();	//List > MemberDto > int
+		String d = list.get(0).getName();	//List > MemberDto > String
+		String e = list.get(0).getAddr();	//List > MemberDto > String
+		//.length() : String 타입의 메소드
+		int f = list.get(0).getName().length();	//List > MemberDot > String > int
 	}
 }
 

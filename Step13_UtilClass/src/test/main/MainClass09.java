@@ -43,16 +43,16 @@ public class MainClass09 {
 		}
 		
 		//참조 연습
-		List<Map<String, Object>> a=list;
-		Map<String, Object> b=list.get(0);
+		List<Map<String, Object>> a=list;	//List<Map<String, Object>>
+		Map<String, Object> b=list.get(0);	//List > Map
 		Object c=list.get(0).get("num");
 		Object d=list.get(0).get("name");
 		Object e=list.get(0).get("addr");
-		int f=(int)list.get(0).get("num");
-		String g=(String)list.get(0).get("name");
-		String h=(String)list.get(0).get("addr");
+		int f=(int)list.get(0).get("num");	//List > Map > Object > casting: int
+		String g=(String)list.get(0).get("name");	//List > Map > Object > casting: String
+		String h=(String)list.get(0).get("addr");	//List > Map > Object > casting: String
 		
-		int i=((String)list.get(0).get("addr")).length();
+		int i=((String)list.get(0).get("addr")).length();	////List > Map > Object > casting: String > .length(): int
 	}
 }
 

@@ -17,6 +17,7 @@ public class MainClass13 {
 		//Set 에 저장된 item 의 갯수?
 		int size=nums.size();
 		//Set 에 저장된 item 을 모두 불러오기?
+		//iterator : 반복자
 		
 		//Iterator 반복자 객체 얻어오기 
 		Iterator<Integer> it = nums.iterator();
