@@ -29,6 +29,9 @@ public class MyFrame extends JFrame{
 		JButton btn4=new JButton("버튼4");
 		add(btn4, BorderLayout.SOUTH);
 		
+		JButton btn5=new JButton("버튼5");
+		add(btn5, BorderLayout.CENTER);
+		
 		setVisible(true);
 	}
 	

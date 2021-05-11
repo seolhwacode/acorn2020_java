@@ -23,10 +23,16 @@ import javax.swing.JTextField;
 public class MyFrame extends JFrame 
 					implements ActionListener, KeyListener{
 	//필드
-	JTextField inputMsg;
-	JLabel lab1;
-	DefaultListModel<String> model;
-	JList<String> list;
+	JTextField inputMsg;	//텍스트 입력 필드
+	JLabel lab1;		//텍트 출력
+	
+	/* <JList>
+	 * - 요소 객체들의 리스트를 보여주는 component
+	 * - 사용자에게 리스트의 요소 객체를 하나를 선택 or 여러개를 선택 할 수 있게 할 수 있다.
+	 * - 각 요소는 기본 모델 객체 ( 목록에 출력할 data 를 가지고 있는 객체 )
+	 */
+	DefaultListModel<String> model;	//기본 모델 객체 ( 목록에 출력할 data 를 가지고 있는 객체 )
+	JList<String> list;	//위에 설명
 	
 	//static final 상수
 	static final String COMMAND_SEND="send";
@@ -35,13 +41,16 @@ public class MyFrame extends JFrame
 	
 	//default  생성자
 	public MyFrame() {
+		//BorderLayout : NORTH / WEST / EAST / SOUTH / CENTER 에 위치시킬 수 있다.
 		setLayout(new BorderLayout());
 		//문자열 한줄을 입력할수 있는 JTextField
 		inputMsg=new JTextField(10);
+		//MyFrame 은 KeyListener 를 구현하고있다.
 		inputMsg.addKeyListener(this);
 		
+		//전송 버튼
 		JButton sendBtn=new JButton("전송");
-		sendBtn.setActionCommand(COMMAND_SEND);
+		sendBtn.setActionCommand(COMMAND_SEND);	//command 추가
 		sendBtn.addActionListener(this);
 		//삭제 버튼
 		JButton removeBtn=new JButton("선택 삭제");
@@ -53,14 +62,15 @@ public class MyFrame extends JFrame
 		//JLabel 객체 생성
 		lab1=new JLabel("label입니다.");
 		
-		//JPanel 객체 생성
+		//JPanel 객체 생성 : 가벼운 Component
 		JPanel panel=new JPanel();
 		//페널도 레이아웃을 지정할수 있다( 기본값은 FlowLayout 가운데 정렬이다 )
+		//왼쪽 정렬
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		//JPanel 에 UI 추가 하고 
-		panel.add(inputMsg);
-		panel.add(sendBtn);
-		panel.add(lab1);
+		panel.add(inputMsg);	//텍스트 입력 필드 추가 (JTextField)
+		panel.add(sendBtn);		//sendBtn 추가 (JButton)
+		panel.add(lab1);		//lab1 추가 (JLabel)
 		//페널에 배경색 지정하기 
 		panel.setBackground(Color.YELLOW);
 		
@@ -79,10 +89,12 @@ public class MyFrame extends JFrame
 		list.setModel(model);
 		
 		//스크롤 페널에 목록 넣어주기
+		//JScrollPane(Component view, int 세로 스크롤, int 가로 스크롤)
 		JScrollPane sc=new JScrollPane(list, 
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
+//		sc.setBackground(Color.BLUE);	-> 이건 안되나?
 		//스크롤 페널을 프레임의 가운데에 배치하기 
 		add(sc, BorderLayout.CENTER);
 	}
@@ -97,6 +109,8 @@ public class MyFrame extends JFrame
 		frame.setBounds(100, 100, 500, 500);
 		frame.setVisible(true);
 	}
+	
+//ActionListener
 	//ActionListener 인터페이스를 구현 해서 강제 오버라이드된 메소드 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -107,10 +121,13 @@ public class MyFrame extends JFrame
 		}else if(command.equals(COMMAND_REMOVE)) {//삭제 버튼을 눌렀을때
 			//JList 객체에게 선택된 item 이 있는지 있다면 몇번째 아이템이 선택되었는지
 			//물어 봐야 한다. (메소드를 이용해서 알아낸다)
+			//아무것도 선택하지 않았으면 -1 return / 선택이 있으면 해당 index 를 return
 			int selectedIndex=list.getSelectedIndex();
 			if(selectedIndex >= 0) {//선택된 cell 이 있을때 
 				//정말로 삭제 할것인지 물어본다.
+				//YES(JOptionPane.YES_OPTION = 0), NO, CANCLE ... int 값을 return 한다.
 				int result=JOptionPane.showConfirmDialog(this, "삭제 할겨?");
+				//Yes 옵션 선택
 				if(result==JOptionPane.YES_OPTION) {
 					//JList 에 연결된 모델에서 해당 인덱스를 삭제한다. 
 					model.remove(selectedIndex);
@@ -122,6 +139,8 @@ public class MyFrame extends JFrame
 	}
 	
 	//메소드 추가
+	//sendBtn 을 눌렀을 때 실행되는 method
+	//JTextField 에 입력한 문자열을 읽어와서, JLabel에 출력, JList 에 출력하기 위해, 그 안의 model 에 객체를 추가한다.
 	public void send() {
 		//JTextField 에 입력한 문자열을 읽어와야한다.
 		String msg=inputMsg.getText();
@@ -132,6 +151,8 @@ public class MyFrame extends JFrame
 		//모델에 입력한 문자열 추가하기
 		model.addElement(msg);
 	}
+	
+//KeyListener 재정의 메소드
 	
 	//키를 눌렀을때 호출되는 메소드 
 	@Override

@@ -1,6 +1,7 @@
 package test.frame5;
 
 import java.awt.Button;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,11 +23,23 @@ public class MyFrame extends JFrame{
 		add(sendBtn);
 		add(removeBtn);
 		
+		//여기서 this는 MyFrame 데이터타입이다.
+		MyFrame aFrame = this;
+		//Component는 JFrame 의 부모
+		Component aComponent = this;
+		
+		JOptionPane.showMessageDialog(this, "오잉~?");
+		
 		//ActionListener 인터페이스 type  의 참조값 
 		ActionListener listener=new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println("전송 합니다~");
+
+				//여기서 this는 ActionListener 타입 데이터이다.
+				ActionListener b = this;
+				//그냥 this 를 하면 ActionListener 객체가 선택 되므로, MyFrame.this 를 해야한다.
+				//showMessageDialog(Frame, msg) : 팝업창 메시지 띄우기
 				JOptionPane.showMessageDialog(MyFrame.this, "전송합니다~");
 			}
 		};
@@ -45,6 +58,7 @@ public class MyFrame extends JFrame{
 		frame.setTitle("나의 프레임");
 		//프레임을 닫으면 자동으로 프로세스가 종료 되도록 한다.
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//x, y, width, height
 		frame.setBounds(100, 100, 500, 500);
 		frame.setVisible(true);
 	}

@@ -8,15 +8,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.JTextField;	//문자열 입력 필드
 
 public class MyFrame extends JFrame implements ActionListener{
+	//문자열 입력 필드
+	//객체 내부의 다른 메소드에서 접근할 수 있도록, class의 멤버변수로 생성하였다.
 	JTextField inputMsg;
 
 	//default  생성자
 	public MyFrame() {
 		setLayout(new FlowLayout());
 		//문자열 한줄을 입력할수 있는 JTextField
+		//파라미터로 int 정수값을 넣는다. -> 키보드입력 창의 크기
 		inputMsg=new JTextField(10);
 		add(inputMsg);
 		

@@ -47,6 +47,7 @@ public class MyFrame extends JFrame implements ActionListener{
 		//이벤트가 발생한 UI(JButton) 의 참조값을 얻어온다.
 		Object obj=e.getSource();
 		
+		//참조값과 비교해서 어떤 버튼인지 확인하기!
 		if(obj == sendBtn) {//전송 버튼을 눌렀다면 
 			JOptionPane.showMessageDialog(this, "전송합니다.");
 		}else if(obj == removeBtn) {//삭제 버튼을 눌렀다면 

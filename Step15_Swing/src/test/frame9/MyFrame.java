@@ -16,8 +16,8 @@ import javax.swing.JTextField;
 public class MyFrame extends JFrame 
 					implements ActionListener, KeyListener{
 	//필드
-	JTextField inputMsg;
-	JLabel lab1;
+	JTextField inputMsg;	//텍스트 입력 필드
+	JLabel lab1;		//일반 텍스트 출력
 	
 	//default  생성자
 	public MyFrame() {
@@ -26,6 +26,7 @@ public class MyFrame extends JFrame
 		inputMsg=new JTextField(10);
 		add(inputMsg);
 		
+		//KeyListener : 키보드 이벤트를 감지할 수 있는 frame work
 		inputMsg.addKeyListener(this);
 		
 		JButton sendBtn=new JButton("전송");
@@ -58,6 +59,10 @@ public class MyFrame extends JFrame
 		//입력창 문자열 삭제 하기 
 		inputMsg.setText("");
 	}
+	
+	
+//	KeyListener 의 메소드
+	
 	//키를 눌렀을때 호출되는 메소드 
 	@Override
 	public void keyPressed(KeyEvent e) {

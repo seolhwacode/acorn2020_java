@@ -47,7 +47,7 @@ public class MyFrame extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		//JOptionPane.showMessageDialog(this, "버튼을 눌렀네?");
 		
-		//애션 command 읽어오기
+		//액션 command 읽어오기
 		String command=e.getActionCommand();
 		
 		if(command.equals("send")) {//전송 버튼을 눌렀을때 
