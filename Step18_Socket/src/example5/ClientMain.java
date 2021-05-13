@@ -137,7 +137,7 @@ public class ClientMain extends JFrame
 		try {
 			//접속이 성공되면 Socket 객체의 참조값이 반환된다.
 			//반환되는 객체의 참조값을 필드에 저장해 놓는다. 
-			socket=new Socket("192.168.0.30", 5000);
+			socket=new Socket("14.63.164.99", 5000);
 			//서버에 문자열을 출력할
 			//BufferedWriter 객체의 참조값을 얻어내서 필드에 저장해 놓는다. 
 			OutputStream os=socket.getOutputStream();
@@ -258,6 +258,7 @@ public class ClientMain extends JFrame
 					//list 라는 키값으로 저장된 JSONArray  객체를 얻어온다. 
 					JSONArray arr=jsonObj.getJSONArray("list");
 					//참여자 목록을 저장할 Vector
+					//-> ArrayList 와 사용이 거의 같다.
 					Vector<String> list=new Vector<>();
 					list.add("참여자 목록");
 					//반복문 돌면서 참여자 목록을 다시 넣어준다.
