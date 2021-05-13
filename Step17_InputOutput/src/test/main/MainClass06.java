@@ -15,12 +15,20 @@ public class MainClass06 {
 		OutputStreamWriter osw=new OutputStreamWriter(os);
 		BufferedWriter bw=new BufferedWriter(osw);	
 		try {
-			bw.write("하나");
+			bw.write("하나\r\n");
 			bw.newLine(); //개행 기호 출력
 			bw.write("두울");
 			bw.newLine();
 			bw.write("세엣");
 			bw.flush();
+			/*
+			 * 전체 출력된 내용 : 하나\r\n두울\r\n세엣
+			 * 위의 내용에서 이클립스 콘솔창은 \r\n 을 출력하지 않고 해석해서 아래와 같이 출력
+			 * 
+			 * 하나
+			 * 두울
+			 * 세엣
+			 */
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

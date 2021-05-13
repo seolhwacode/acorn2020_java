@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class MainClass02 {
 	public static void main(String[] args) {
 		// 1byte 처리 스트림
-		InputStream is=System.in;
+		InputStream is=System.in;		
 		// 2byte 처리 스트림
 		InputStreamReader isr=new InputStreamReader(is);
 		try {

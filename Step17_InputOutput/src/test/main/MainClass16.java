@@ -8,14 +8,15 @@ import java.io.IOException;
 public class MainClass16 {
 	public static void main(String[] args) {
 		//필요한 참조값을 담을 지역 변수를 미리 만든다.
+		//Stream : 파일의 byte를 하나하나 읽고 넣는 의미
 		FileInputStream fis=null;
 		FileOutputStream fos=null;
 		
 		try {
 			//파일에서 byte 를 읽어낼 객체 
-			fis=new FileInputStream("c:/acorn2020/myFolder/1.jpg");
+			fis=new FileInputStream("c:/acorn202104/myFolder/1.jpg");
 			//읽어낸 byte 를 출력할 객체 
-			fos=new FileOutputStream("c:/acorn2020/myFolder/copied.jpg");
+			fos=new FileOutputStream("c:/acorn202104/myFolder/copied.jpg");
 			//반복문 돌면서 읽어내기
 			while(true) {
 				//1 byte 씩 읽어들인다.

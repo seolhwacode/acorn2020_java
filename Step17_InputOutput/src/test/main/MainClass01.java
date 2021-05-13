@@ -3,6 +3,8 @@ package test.main;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 public class MainClass01 {
 	public static void main(String[] args) {
 		//키보드와 연결된 InputStrem type 의 참조값을 kbd 라는 지역변수에 담기 
@@ -17,6 +19,7 @@ public class MainClass01 {
 			System.out.println("code:"+code);
 			//코드값에 대응되는 문자 얻어내기
 			char ch=(char)code;
+			kbd.close();
 			System.out.println("char:"+ch);
 		} catch (IOException e) {
 			e.printStackTrace();

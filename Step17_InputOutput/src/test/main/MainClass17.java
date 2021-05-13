@@ -13,20 +13,23 @@ public class MainClass17 {
 		
 		try {
 			//파일에서 byte 를 읽어낼 객체 
-			fis=new FileInputStream("c:/acorn2020/myFolder/1.jpg");
+			fis=new FileInputStream("c:/acorn202104/myFolder/1.jpg");
 			//읽어낸 byte 를 출력할 객체 
-			fos=new FileOutputStream("c:/acorn2020/myFolder/copied2.jpg");
+			fos=new FileOutputStream("c:/acorn202104/myFolder/copied2.jpg");
 			//byte 데이터를 읽어낼 방1024 개 짜리 배열객체 생성
 			byte[] buffer=new byte[1024];
 			//반복문 돌면서 읽어내기
 			while(true) {
 				//byte[] 객체를 전달해서 읽어내고 리턴되는 데이터는 읽은 byte 의 갯수가 리턴된다.
+				//byte[] 를 처음 생성하면 전부 0이 들어있다가, read 하게 되면 byte 값이 들어간다.
+				//byte 값으로 음수(-)가 있는데, 256가지 색을 다 읽으려면, 양수로는 모자라기 때문에 음수가 들어감.
 				int readedByte=fis.read(buffer);
 				System.out.println(readedByte);
 				if(readedByte==-1) {//더이상 읽을 byte 가 없다면 
 					break;//반복문 탈출
 				}
 				//byte[] 에 있는 데이터를 읽은 만큼 출력하기
+				//byte[] 에 있는 데이터를 0번 방부터 읽은 만큼(readedByte) 출력하기
 				fos.write(buffer, 0, readedByte);
 			}
 			System.out.println("파일을 성공적으로 복사 했습니다.");

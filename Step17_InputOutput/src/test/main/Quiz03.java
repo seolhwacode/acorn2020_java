@@ -2,6 +2,7 @@ package test.main;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -71,6 +72,7 @@ public class Quiz03 extends JFrame implements ActionListener{
 		area=new JTextArea();
 		add(area, BorderLayout.CENTER);
 		area.setBackground(Color.YELLOW);
+		//보이지 않음
 		area.setVisible(false);
 	}
 	// run 했을때 실행순서가 시작 되는 메인 메소드 
@@ -99,9 +101,18 @@ public class Quiz03 extends JFrame implements ActionListener{
 	}
 	//파일에 있는 문자열을 읽어와서 출력하는 작업을 하는 메소드
 	public void openContent() {
-		JFileChooser fc=new JFileChooser("c:/acorn2020/myFolder");
+		//처음 showOpenDialog 를 띄울 때, 시작 위치를 지정하는 절대 경로를 넘겨준다.
+		JFileChooser fc=new JFileChooser("c:/acorn202104/myFolder");
 		//파일을 open 하는 다이얼로그 띄우기 
+		/*
+		 * fc.showOpenDialog(Component parent) : Component 는 JFrame 의 부모 클래스. 그래서 this 를 넘겨주는 것!
+		 * showOpenDialog 팝업창이 종료될 때, 상태를 static final 상수를 지정하여 그 값을 리턴 
+		 * 1) JFileChooser.CANCEL_OPTION : 취소
+		 * 2) JFileChooser.APPROVE_OPTION : 확인 
+		 * 3) JFileChooser.ERROR_OPTION : 에러
+		*/
 		int result=fc.showOpenDialog(this);	
+		//APPROVE_OPTION : 파일을 선택하고, 확인을 눌렀을 때
 		if(result == JFileChooser.APPROVE_OPTION) {
 			// open 할 예정인 파일 객체의 참조값 얻어오기 
 			File file=fc.getSelectedFile();
@@ -134,7 +145,7 @@ public class Quiz03 extends JFrame implements ActionListener{
 	public void saveContent() {
 		//JTextArea 에 입력한 문자열을 읽어온다.
 		String content=area.getText();
-		JFileChooser fc=new JFileChooser("c:/acorn2020/myFolder");
+		JFileChooser fc=new JFileChooser("c:/acorn202104/myFolder");
 		int result=fc.showSaveDialog(this);	
 		if(result == JFileChooser.APPROVE_OPTION) {
 			//새로 만들 예정인 File 객체 의 참조값 얻어오기 

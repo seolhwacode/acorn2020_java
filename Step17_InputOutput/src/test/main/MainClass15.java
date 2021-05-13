@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class MainClass15 {
 	public static void main(String[] args) {
-		File memoFile=new File("c:/acorn2020/myFolder/memo.txt");
+		File memoFile=new File("c:/acorn202104/myFolder/memo.txt");
 		//필요한 객체의 참조값을 담을 지역 변수를 미리 만든다.
 		FileReader fr=null;
 		BufferedReader br=null;
@@ -17,6 +17,7 @@ public class MainClass15 {
 				return; //메소드 끝내기 
 			}
 			//파일에서 문자열을 읽어들일 객체의 참조값을 미리 만들어둔 지역 변수에 담는다.
+			//RunTimeException 이 아닌 예외가 발생한다. 그래서 무조건 try ~ catch 에서 new 해줘야한다.
 			fr=new FileReader(memoFile);
 			br=new BufferedReader(fr);
 			while(true) {
@@ -36,7 +37,7 @@ public class MainClass15 {
 				//null 체크를 한 다음에 메소들 호출해서 마무리 작업을 한다. 
 				if(fr!=null)fr.close();
 				if(br!=null)br.close();
-			}catch(IOException ie) {}
+			}catch(IOException e) {}
 		}
 	}
 }
