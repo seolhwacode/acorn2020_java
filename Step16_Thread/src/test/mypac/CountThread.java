@@ -13,8 +13,9 @@ public class CountThread extends Thread{
 	public void run() {
 		//run()  메소드 안쪽이 새로운 작업단위가 된다. 
 		int count=0;
-		while(true) {
+		while(true) {//while(true) : 무한루프
 			try {
+				//1초 대기
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -22,7 +23,7 @@ public class CountThread extends Thread{
 			count++; //count 를 1 증가 시킨다.
 			System.out.println("현재 카운트:"+count);
 			if(count==10) {//카운트가 10이 되면 
-				break;//반복문 탈출 
+				break;//가장 가까운 반복문 탈출 
 			}
 		}
 	}
