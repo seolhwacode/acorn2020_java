@@ -25,7 +25,9 @@ public class MemberDao {
 	private static MemberDao dao;
 	
 	//외부에서 객체 생성하지 못하도록 한다. 
-	private MemberDao() {}
+	private MemberDao() {
+		System.out.println("MemberDao 객체가 생성되었습니다.");
+	}
 	
 	//참조값을 리턴해주는 메소드
 	public static MemberDao getInstance() {
@@ -120,7 +122,7 @@ public class MemberDao {
 		
 		return list;
 	}
-	
+		
 	//회원 한명의 정보를 DB 에서 삭제하는 메소드
 	public boolean delete(int num) {
 		Connection conn=null;
@@ -210,6 +212,69 @@ public class MemberDao {
 			return false;
 		}
 	}	
+	
+	//기본 틀 - insert, update, delete 문
+	//-> template 에 저장해둠 : dbupdate
+/*	public boolean basic() {
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		int flag=0;
+		try {
+			conn=new DBConnect().getConn();
+			//상황에 맞는 sql 문 작성
+			String sql="";
+			pstmt=conn.prepareStatement(sql);
+			// ? 에 바인딩 할 내용이 있다면 여기서 수행한다.
+			
+			//select문 실행 - 결과 flag 로 변경사항이 있는(수정, 추가, 삭제) row 의 개수 return
+			flag=pstmt.executeUpdate();
+			System.out.println("회원 정보를 삭제 했습니다.");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e) {}
+		}
+		//flag 에 성공 여부 판단
+		if(flag>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+*/
+	
+	//select 문 기본 형태 - templates 에 저장 : 
+/*	public boolean selectBasic() {
+		
+		Connection conn=null;
+	    PreparedStatement pstmt=null;
+	    ResultSet rs=null;
+	    try {
+		   conn=new DBConnect().getConn();
+		   //실행할 SELECT 문
+		   String sql="";
+		   pstmt=conn.prepareStatement(sql);
+		   //? 에 바인딩할 내용은 여기서 바인딩한다.
+	       
+	       rs=pstmt.executeQuery();
+	       while(rs.next()) {
+	          //SELECT 된 결과를 여기서 추출해서 객체에 담는다. 
+	          
+	       }
+	    }catch(Exception e) {
+	       e.printStackTrace();
+	    }finally {
+	       try {
+	          if(rs!=null)rs.close();
+	          if(pstmt!=null)pstmt.close();
+	          if(conn!=null)conn.close();
+	       }catch(Exception e) {}
+	    }
+	}
+*/
 }
 
 

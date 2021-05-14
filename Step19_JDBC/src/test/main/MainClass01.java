@@ -21,7 +21,8 @@ public class MainClass01 {
 			//오라클 드라이버 로딩
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			//접속할 DB 의 정보 @아이피주소:port번호:db이름
-			String url="jdbc:oracle:thin:@localhost:1521:xe";
+			//localhost = 127.0.0.1
+			String url="jdbc:oracle:thin:@14.63.164.99:1521:xe";
 			//계정 비밀번호를 이용해서 Connection 객체의 참조값 얻어오기
 			conn=DriverManager.getConnection(url, "scott", "tiger");
 			//예외가 발생하지 않고 여기까지 실행순서가 내려오면 접속 성공이다.
@@ -42,7 +43,13 @@ public class MainClass01 {
 			//PreparedStatement 객체를 이용해서 query 문 수행하고 결과를 
 			//ResultSet 객체로 받아오기
 			rs=pstmt.executeQuery();
+			//rs.next() : 현재 커서가 있는 row 다음에 읽을 수 있는 row 가 있으면, true를 리턴하고, 커서를 한 칸 내려준다.
+			//rs.next() 호출은 커서 다음에 데이터가있으면 true를 반환하면서 커서를 한 칸 내려준다
+			//커서는 맨 위에서 시작!
 			while(rs.next()) {
+				//parameter 에 들어가는 컬럼 이름의 값을 읽어온다.
+				//getInt() : 값을 읽어 int 값으로 반환한다. (db 에서는 number)
+				//getString() : 값을 읽어 String 값으로 반환한다.
 				int num=rs.getInt("num");
 				String name=rs.getString("name");
 				String addr=rs.getString("addr");
