@@ -59,6 +59,9 @@ public class MemoFrame extends JFrame
 		//테이블에 출력할 정보를 가지고 있는 모델 객체 (칼럼명, row 갯수)
 		model=new DefaultTableModel(colNames, 0) {
 			//인자로 전달되는 행(row), 열(column) 수정 가능 여부를 리턴하는 메소드  
+			//false를 return 하면 수정 불가.
+			//true return 하면 수정 가능
+			//column 번수는 0부터 시작
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				//만일 첫번째(0번째 or 2번째) 칼럼이면 수정이 불가 하도록 한다.
@@ -74,9 +77,10 @@ public class MemoFrame extends JFrame
 		JScrollPane scroll=new JScrollPane(table);
 		//JScrollPane  을 프레임의 가운데에 배치하기 
 		add(scroll, BorderLayout.CENTER);
-		//테이블에 회원 목록 출력하기
+		//테이블에 메모 목록 출력하기
 		displayMember();
 		//테이블에서 발생하는 이벤트 리스너 등록 하기
+		//PropertyChangeListener : propertyChange() 오버라이드. 이 메소드가 실행된다.
 		table.addPropertyChangeListener(this);
 	}
 	//테이블에 회원 목록을 출력하는 메소드 
@@ -146,10 +150,15 @@ public class MemoFrame extends JFrame
 	//현재 테이블 cell을 수정중인지 여부를 저장할 필드 
 	boolean isEditing=false;
 	
+	//addPropertyChangeListener 에 등록되는 method 오버라이드
+	//ancestor : 최초 접속 때 호출된다.
+	//tableCellEditor : 셀이 선택시에 (더블클릭) isEditing 은 false 이므로, true 로 수정할 것을 알림
+	//				true 이기 때문에 수정한 내용이  db 에 반영 되고, 그 이후에 isEditing을 false 로 바꾸기
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		System.out.println("property change!");
 		System.out.println(evt.getPropertyName());
+		System.out.println(isEditing);
 		if(evt.getPropertyName().equals("tableCellEditor")) {
 			if(isEditing) {//수정중일때 
 				//변화된 값을 읽어와서 DB 에 반영한다. 
@@ -162,8 +171,9 @@ public class MemoFrame extends JFrame
 				//DB에 저장하기 
 				MemoDao.getInstance().update(dto);
 				isEditing=false;//수정중이 아니라고 표시한다.
+			}else {
+				isEditing=true;//수정중이라 표시한다.
 			}
-			isEditing=true;//수정중이라 표시한다.
 		}
 	}
 }
