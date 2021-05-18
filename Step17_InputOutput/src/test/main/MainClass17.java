@@ -31,6 +31,7 @@ public class MainClass17 {
 				//byte[] 에 있는 데이터를 읽은 만큼 출력하기
 				//byte[] 에 있는 데이터를 0번 방부터 읽은 만큼(readedByte) 출력하기
 				fos.write(buffer, 0, readedByte);
+				fos.flush();//버퍼를 주기적으로 비워주는 것이 좋다.
 			}
 			System.out.println("파일을 성공적으로 복사 했습니다.");
 		} catch (FileNotFoundException e) {
